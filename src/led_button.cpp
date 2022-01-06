@@ -11,25 +11,27 @@
 
 typedef enum
 {
-    LED1 = D5,
-    LED2 = D6,
-    LED3 = D7
-
     // LED1 = D5,
     // LED2 = D6,
     // LED3 = D7
+
+    LED1 = D5,
+    LED2 = D6,
+    LED3 = D7
   
 } led;
 
 typedef enum
 {
+    //Camung
     BUTTON1 = D1,
     BUTTON2 = D2,
     BUTTON3 = D3
 
-    // BUTTON1 = D2,
-    // BUTTON2 = D3,
-    // BUTTON3 = D4
+    //Lahu
+    // BUTTON1 = D3,
+    // BUTTON2 = D4,
+    // BUTTON3 = D1
 
 
    
