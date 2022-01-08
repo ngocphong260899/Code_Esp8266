@@ -15,6 +15,9 @@
 #define  key_json_pos "pos"
 #define  key_status "status"
 #define  key_json_sw_wifi "sw_wifi"
+#define  key_json_hour "hour"
+#define  key_json_minute "minute"
+
 
 
 
