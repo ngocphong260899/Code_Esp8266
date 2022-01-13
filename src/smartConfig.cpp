@@ -90,10 +90,10 @@ void smart_config_loop()
     //     lastPress = millis();
     // }
 
-    if(WiFi.status() == WL_DISCONNECTED)
-    {
-        digitalWrite(LED1,HIGH);
-    }
+    // if(WiFi.status() == WL_DISCONNECTED)
+    // {
+    //     digitalWrite(LED1,HIGH);
+    // }
     
     
 }

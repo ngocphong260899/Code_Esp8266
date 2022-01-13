@@ -15,6 +15,7 @@ void setup()
 {
     Serial.begin(115200);
     WiFi.begin();
+    WiFi.reconnect();
     pinMode(D0,OUTPUT);
     // if(WiFi.status() == WL_CONNECTED)
     // {
@@ -67,6 +68,9 @@ void loop()
         mqtt_loop();
         //button_loop();
         
+    }
+    else{
+        digitalWrite(D0,HIGH);
     }
     button_loop();
     //get_Time_ntp();
