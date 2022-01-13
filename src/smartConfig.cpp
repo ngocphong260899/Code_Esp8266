@@ -7,8 +7,8 @@
 #define LED1 D0
 #define BUTTON1 D3
 
-#define LED_ON() digitalWrite(LED1, HIGH)
-#define LED_OFF() digitalWrite(LED1, LOW)
+#define LED_ON() digitalWrite(LED1, LOW)
+#define LED_OFF() digitalWrite(LED1, HIGH)
 #define LED_TOGGLE() digitalWrite(LED1, digitalRead(LED1) ^ 0x01)
 
 Ticker ticker;
@@ -57,12 +57,13 @@ void smart_config_init()
 {
 
     
-        ticker.attach(1, tick);
+    ticker.attach(1, tick);
     
 }
 
 void smart_config_loop()
 {
+    
     static int lastPress = 0;
     if (longPress())
     {
@@ -74,12 +75,27 @@ void smart_config_loop()
         exit_smart();
         Serial.println("Connected, Exit smartconfig");
     }
-    if (millis() - lastPress > 10000 && WiFi.status() == WL_CONNECTED)
+    if ((millis() - lastPress > 10000 && WiFi.status() == WL_CONNECTED ))
     {
         exit_smart();
         Serial.println(" Exit smartconfig");
+        digitalWrite(D0,LOW);
         lastPress = millis();
     }
+    // if (millis() - lastPress > 30000 && WiFi.status() != WL_CONNECTED)
+    // {
+    //     exit_smart();
+    //     Serial.println(" Exit smartconfig");
+    //     digitalWrite(D0,HIGH);
+    //     lastPress = millis();
+    // }
+
+    if(WiFi.status() == WL_DISCONNECTED)
+    {
+        digitalWrite(LED1,HIGH);
+    }
+    
+    
 }
 
 void get_Wifi()

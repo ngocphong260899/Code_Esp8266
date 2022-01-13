@@ -1,13 +1,14 @@
 #include "mqtt.h"
 #include "led_button.h"
 #include "smartConfig.h"
+#include "timeNTP.h"
 WiFiClient espClient;
 PubSubClient client(espClient);
 typedef enum
 {
     CONTROL_IO = 1,
     GET_STT_IO = 2,
-    GET_I4_WIFI = 3
+    GET_ALARM = 3
 
 } ctr_device;
 
@@ -20,7 +21,7 @@ typedef enum
 
 void mqtt_connect()
 {
-    while (!client.connected())
+    if (!client.connected())
     {
         Serial.println("Dang ket noi MQTT...");
         // Connect MQTT
@@ -34,7 +35,7 @@ void mqtt_connect()
             Serial.print("No connect: ");
             Serial.print(client.state());
             Serial.println("Doi 5 giay");
-            delay(5000);
+            //delay(5000);
         }
     }
 }
@@ -50,6 +51,7 @@ void mqtt_loop()
 
 void callback(char *p_toppic, uint8_t *p_data, unsigned int length)
 {
+    Serial.println((char*)p_data);
     StaticJsonBuffer<1024> JSONBuffer;
     JsonObject &data = JSONBuffer.parseObject((char *)p_data);
     if (!data.success())
@@ -63,15 +65,23 @@ void callback(char *p_toppic, uint8_t *p_data, unsigned int length)
     {
     case CONTROL_IO:
     {
+        Serial.println("control IO");
         control_IO(status);
     }
     break;
 
     case GET_STT_IO:
     {
-
+        Serial.println("Get state");
         get_State_IO();
         get_Wifi();
+    }
+    break;
+
+    case GET_ALARM:
+    {
+        Serial.println("Set Alarm");
+        get_Alarm(data);
     }
     break;
     }

@@ -24,27 +24,27 @@ typedef enum
 typedef enum
 {
     //Camung
-    BUTTON1 = D1,
-    BUTTON2 = D2,
-    BUTTON3 = D3
+    // BUTTON1 = D1,
+    // BUTTON2 = D2,
+    // BUTTON3 = D3
 
     //Lahu
-    // BUTTON1 = D3,
-    // BUTTON2 = D4,
-    // BUTTON3 = D1
+    BUTTON1 = D3,
+    BUTTON2 = D4,
+    BUTTON3 = D1
 
 
    
-} button;
+} button; 
 
 typedef enum
 {
-    CH1_ON = 1,
-    CH1_OFF = 2,
-    CH2_ON = 3,
-    CH2_OFF = 4,
-    CH3_ON = 5,
-    CH3_OFF = 6
+    CH1_ON  =   1,
+    CH1_OFF =   2,
+    CH2_ON  =   3,
+    CH2_OFF =   4,
+    CH3_ON  =   5,
+    CH3_OFF =   6
 } mqtt_cmd_control;
 
 uint8_t m_led[NUMBER_ARR] = {LED1, LED2, LED3};
@@ -64,7 +64,7 @@ void led_staus_start()
 {
     for (int i = 0; i < NUMBER_ARR; i++)
     {
-        digitalWrite(m_led[i], HIGH);
+        digitalWrite(m_led[i], LOW);
     }
 }
 

@@ -3,13 +3,11 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 
-WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP);
+void ntp_Init();
+void get_Time_ntp();
+void get_Alarm(JsonObject &data);
 
 
 
-void timeClient_init()
-{
-    timeClient.begin();
-}
+
 
