@@ -79,7 +79,7 @@ void smart_config_loop()
     {
         exit_smart();
         Serial.println(" Exit smartconfig");
-        digitalWrite(D0,LOW);
+       // digitalWrite(D0,LOW);
         lastPress = millis();
     }
     // if (millis() - lastPress > 30000 && WiFi.status() != WL_CONNECTED)
