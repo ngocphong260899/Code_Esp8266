@@ -7,6 +7,9 @@
 #include "timeNTP.h"
 static uint32_t time_slice = 0;
 static uint32_t time_handler_button_before = 0;
+static uint32_t time_handler_mqtt_before = 0;
+static uint32_t time_handler_alarm_before = 0;
+
 //const char *ssid = "VNPT TUAN";
 //const char *password = "";
 
@@ -49,7 +52,7 @@ void mqtt_loop_()
 {
     time_slice = millis();
 
-    if (time_slice - time_handler_button_before > 10)
+    if (time_slice - time_handler_mqtt_before > 10)
     {
         mqtt_loop();
         time_handler_button_before = time_slice;
