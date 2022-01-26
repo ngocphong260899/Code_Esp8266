@@ -24,14 +24,14 @@ typedef enum
 typedef enum
 {
     //Camung
-    // BUTTON1 = D1,
-    // BUTTON2 = D2,
-    // BUTTON3 = D3
+    BUTTON1 = D1,
+    BUTTON2 = D2,
+    BUTTON3 = D3
 
     //Lahu
-    BUTTON1 = D3,
-    BUTTON2 = D4,
-    BUTTON3 = D1
+    // BUTTON1 = D3,
+    // BUTTON2 = D4,
+    // BUTTON3 = D1
 
 
    

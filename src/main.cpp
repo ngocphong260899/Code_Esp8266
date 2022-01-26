@@ -38,7 +38,7 @@ void button_loop()
 {
     time_slice = millis();
 
-    if (time_slice - time_handler_button_before > 50)
+    if (time_slice - time_handler_button_before > 20)
     {
         button_handler();
         time_handler_button_before = time_slice;
@@ -49,18 +49,27 @@ void mqtt_loop_()
 {
     time_slice = millis();
 
-    if (time_slice - time_handler_button_before > 50)
+    if (time_slice - time_handler_button_before > 10)
     {
         mqtt_loop();
         time_handler_button_before = time_slice;
     }
 }
+void alarm_loop()
+{
+    static uint32_t oldMillisAlarm = 0;
+    if (millis() - oldMillisAlarm > 1000)
+    {
+        oldMillisAlarm = time_slice;
 
+        get_time_eeprom();
+    }
+}
 void check_Wifi_connect()
 {
     time_slice = millis();
 
-    if (time_slice - time_handler_button_before > 50)
+    if (time_slice - time_handler_button_before > 10)
     {
 
         digitalWrite(D0, HIGH);
@@ -70,21 +79,20 @@ void check_Wifi_connect()
 
 void loop()
 {
-
     smart_config_loop();
 
     if (WiFi.status() == WL_CONNECTED)
     {
-         digitalWrite(D0,LOW);
+        digitalWrite(D0, LOW);
         mqtt_loop();
         //button_loop();
+        //
     }
     else if (WiFi.status() == WL_DISCONNECTED)
     {
-        
-        digitalWrite(D0,HIGH);
-        
+        digitalWrite(D0, HIGH);
     }
+
     button_loop();
-    //get_Time_ntp();
+    alarm_loop();
 }
