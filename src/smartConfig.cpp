@@ -64,6 +64,7 @@ void smart_config_init()
 void smart_config_loop()
 {
     
+    
     static int lastPress = 0;
     if (longPress())
     {
@@ -74,25 +75,18 @@ void smart_config_loop()
     {
         exit_smart();
         Serial.println("Connected, Exit smartconfig");
+
     }
-    if ((millis() - lastPress > 10000 && WiFi.status() == WL_CONNECTED ))
+    if ((millis() - lastPress > 60000 && WiFi.status() == WL_CONNECTED ))
     {
         exit_smart();
-        Serial.println(" Exit smartconfig");
-       // digitalWrite(D0,LOW);
-        lastPress = millis();
+       // Serial.println("Debug_print: Exit smartconfig");
+       
     }
-    // if (millis() - lastPress > 30000 && WiFi.status() != WL_CONNECTED)
-    // {
-    //     exit_smart();
-    //     Serial.println(" Exit smartconfig");
-    //     digitalWrite(D0,HIGH);
-    //     lastPress = millis();
-    // }
 
     // if(WiFi.status() == WL_DISCONNECTED)
     // {
-    //     digitalWrite(LED1,HIGH);
+    //    button_handler();
     // }
     
     

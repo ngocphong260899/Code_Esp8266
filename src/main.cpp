@@ -41,7 +41,7 @@ void button_loop()
 {
     time_slice = millis();
 
-    if (time_slice - time_handler_button_before > 20)
+    if (time_slice - time_handler_button_before > 50)
     {
         button_handler();
         time_handler_button_before = time_slice;
@@ -82,8 +82,8 @@ void check_Wifi_connect()
 
 void loop()
 {
+    button_loop();
     smart_config_loop();
-
     if (WiFi.status() == WL_CONNECTED)
     {
         digitalWrite(D0, LOW);
@@ -96,6 +96,5 @@ void loop()
         digitalWrite(D0, HIGH);
     }
 
-    button_loop();
     alarm_loop();
 }

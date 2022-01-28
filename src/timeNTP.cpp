@@ -63,9 +63,9 @@ void get_time_eeprom()
     EEPROM.get(0, time_alarm);
     timeClient.update();
 
-    Serial.printf("HR: %u - %u, MIN: %u - %u\n",
-                  time_alarm.hour, timeClient.getHours(),
-                  time_alarm.minute, timeClient.getMinutes());
+    //Serial.printf("HR: %u - %u, MIN: %u - %u\n",
+                  //time_alarm.hour, timeClient.getHours(),
+                  //time_alarm.minute, timeClient.getMinutes());
 
     static struct
     {
