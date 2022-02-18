@@ -72,6 +72,8 @@ void get_Alarm(JsonObject &data)
         EEPROM.commit();
         EEPROM.end();
         Serial.println("Save data alarm 1 ch");
+        sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"status\":%d}", 3, 1,status);
+        queueMsg(msg);
     }
     break;
     case 2:
@@ -86,6 +88,8 @@ void get_Alarm(JsonObject &data)
         EEPROM.commit();
         EEPROM.end();
         Serial.println("Save data alarm 2 ch");
+        sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"status\":%d}", 3, 2,status);
+        queueMsg(msg);
     }
     break;
     case 3:
@@ -100,6 +104,8 @@ void get_Alarm(JsonObject &data)
         EEPROM.commit();
         EEPROM.end();
         Serial.println("Save data alarm 3 ch");
+        sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"status\":%d}", 3, 3,status);
+        queueMsg(msg);
     }
     break;
     }
@@ -107,12 +113,21 @@ void get_Alarm(JsonObject &data)
     /*
         return true set alarm
     */
-    sprintf(msg, "{\"sw_wifi\":%d}", 3);
-    queueMsg(msg);
+    // sprintf(msg, "{\"sw_wifi\":%d}", 3);
+    // queueMsg(msg);
 }
 
 
-
+void get_Alarm_state()
+{
+    char msg[100];
+    sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"hour\":%d,\"minute\":%d,\"status\":%d}", 4, 1,time_alarm.hour,time_alarm.minute,time_alarm.status);
+    queueMsg(msg);
+      sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"hour\":%d,\"minute\":%d,\"status\":%d}", 4, 2,time_alarm1.hour,time_alarm1.minute,time_alarm1.status);
+    queueMsg(msg);
+      sprintf(msg, "{\"sw_wifi\":%d,\"pos\":%d,\"hour\":%d,\"minute\":%d,\"status\":%d}", 4, 3,time_alarm2.hour,time_alarm2.minute,time_alarm2.status);
+    queueMsg(msg);
+}
 void get_alarm1()
 {
     EEPROM.get(0, time_alarm);

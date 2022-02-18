@@ -8,7 +8,8 @@ typedef enum
 {
     CONTROL_IO = 1,
     GET_STT_IO = 2,
-    GET_ALARM = 3
+    GET_ALARM = 3,
+    GET_ALARM_STATE = 4
 
 } ctr_device;
 
@@ -84,7 +85,12 @@ void callback(char *p_toppic, uint8_t *p_data, unsigned int length)
         get_Alarm(data);
     }
     break;
+    case GET_ALARM_STATE:
+    {
+        get_Alarm_state();
+    }break;
     }
+    
 }
 
 void mqtt_init()

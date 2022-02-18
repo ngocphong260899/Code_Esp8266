@@ -11,10 +11,6 @@
 
 typedef enum
 {
-    // LED1 = D5,
-    // LED2 = D6,
-    // LED3 = D7
-
     LED1 = D5,
     LED2 = D6,
     LED3 = D7

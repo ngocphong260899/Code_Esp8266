@@ -10,13 +10,12 @@ static uint32_t time_handler_button_before = 0;
 static uint32_t time_handler_mqtt_before = 0;
 static uint32_t time_handler_alarm_before = 0;
 
-//const char *ssid = "VNPT TUAN";
-//const char *password = "";
+
 
 void setup()
 {
     Serial.begin(115200);
-    WiFi.begin("BLE123","66668888");
+   // WiFi.begin("BLE123","66668888");
     
     WiFi.begin();
     
@@ -31,8 +30,8 @@ void setup()
     // else{
     //       digitalWrite(D0,HIGH);
     // }
-    smart_config_init();
-   // WiFi.reconnect();
+   //smart_config_init();
+    //WiFi.reconnect();
     led_btn_init();
     led_staus_start();
     mqtt_init();
