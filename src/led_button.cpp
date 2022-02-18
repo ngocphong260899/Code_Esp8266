@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "mqtt.h"
 #define TIME_SLICE_TO_READ_BUTTON 10
-#define OS_BTN_IS_PRESS_TIME_MAX 50
+#define OS_BTN_IS_PRESS_TIME_MAX 100
 #define OS_BTN_IS_PRESS_TIME_MIN 10
 
 #define NUMBER_ARR 3
@@ -24,14 +24,14 @@ typedef enum
 typedef enum
 {
     //Camung
-    BUTTON1 = D1,
-    BUTTON2 = D2,
-    BUTTON3 = D3
+    // BUTTON1 = D1,
+    // BUTTON2 = D2,
+    // BUTTON3 = D3
 
     //Lahu
-    // BUTTON1 = D3,
-    // BUTTON2 = D4,
-    // BUTTON3 = D1
+    BUTTON1 = D3,
+    BUTTON2 = D4,
+    BUTTON3 = D1
 
 
    

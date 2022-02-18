@@ -40,15 +40,15 @@ void ntp_Init()
     timeClient.setTimeOffset(7 * 60 * 60);
 }
 
-void get_Time_ntp()
-{
-    char time[100];
-    timeClient.update();
-    int hour = timeClient.getHours();
-    int minute = timeClient.getMinutes();
+// void get_Time_ntp()
+// {
+//     char time[100];
+//     timeClient.update();
+//     int hour = timeClient.getHours();
+//     int minute = timeClient.getMinutes();
 
-    //delay(1000);
-}
+//     //delay(1000);
+// }
 
 void get_Alarm(JsonObject &data)
 {
@@ -116,7 +116,7 @@ void get_Alarm(JsonObject &data)
 void get_alarm1()
 {
     EEPROM.get(0, time_alarm);
-    timeClient.update();
+    //timeClient.update();
     static struct
     {
         int hr, min;
@@ -141,7 +141,7 @@ void get_alarm1()
 void get_alarm2()
 {
     EEPROM.get(0, time_alarm1);
-    timeClient.update();
+    //timeClient.update();
     static struct
     {
         int hr, min;
@@ -166,7 +166,7 @@ void get_alarm2()
 void get_alarm3()
 {
     EEPROM.get(0, time_alarm);
-    timeClient.update();
+    //timeClient.update();
     static struct
     {
         int hr, min;
@@ -190,6 +190,7 @@ void get_alarm3()
 
 void get_time_eeprom()
 {
+    timeClient.update();
     get_alarm1();
     get_alarm2();
     get_alarm3();
